@@ -27,7 +27,7 @@ function dizOi(nome) {
 dizOi() //iniciou a função diretamente
 
 */
-// Aula 3
+/* Aula 3
 const braco = document.querySelector("#braco")
 const somar = document.querySelector("#somar")
 const subtrair = document.querySelector("#subtrair")
@@ -36,7 +36,7 @@ const controle = document.querySelectorAll(".controle-ajuste")
 //Iteração dos elementos e refatoração da função
 controle.forEach( elemento => {
 	elemento.addEventListener("click", (evento) => {
-		manipulaDados(evento.target.textContent)
+		manipulaDados(evento.target.textContent) //pega o texto dentro do elemento
 	})
 })
 
@@ -45,5 +45,24 @@ function manipulaDados(operacao) {
         braco.value = parseInt(braco.value) - 1
     } else {
         braco.value = parseInt(braco.value) + 1
+    }
+}
+*/
+// Aula 4
+const controle = document.querySelectorAll("[data-controle]")
+
+//Iteração dos elementos e refatoração da função
+controle.forEach( elemento => {
+	elemento.addEventListener("click", (evento) => {
+		manipulaDados(evento.target.dataset.controle, evento.target.parentNode)
+	})
+})
+
+function manipulaDados(operacao, controle) {
+	const peca = controle.querySelector("[data-contador]")
+    if(operacao === "-") {
+        peca.value = parseInt(peca.value) - 1
+    } else {
+        peca.value = parseInt(peca.value) + 1
     }
 }
